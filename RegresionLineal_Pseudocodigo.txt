@@ -1,0 +1,41 @@
+REGRESIÓN LINEAL (por Gradiente Descendente)
+----------------------------------------------------------------
+Algoritmo: Regresión Lineal por Gradiente Descendente
+Entrada: Matriz X, vector y, tasa de aprendizaje alpha, iteraciones T
+Salida:  Pesos theta
+ 
+1. Inicializar theta en ceros o valores aleatorios
+2. Para t desde 1 hasta T:
+     a. Calcular predicciones:
+           error = (X * theta) - y
+     b. Calcular gradiente:
+           grad = (1/m) * (X_transpuesta * error)
+     c. Actualizar pesos:
+           theta = theta - alpha * grad
+3. Retornar theta
+
+COMPLEJIDAD EN TIEMPO:
+  - Entrenamiento (Gradiente Descendente): O(k · n · d)
+      donde k = número de iteraciones, n = ejemplos, d = características
+  - Entrenamiento (Ecuación Normal):       O(d³)
+      (debido a la inversión de la matriz X^T · X)
+  - Predicción:                            O(d)
+ 
+COMPLEJIDAD EN ESPACIO:
+  - O(d)  → almacenar los pesos del modelo
+
+DEFINICIÓN:
+Método estadístico de aprendizaje supervisado para modelar la
+relación entre una variable dependiente y (objetivo) y una o más
+variables independientes X (características), asumiendo una
+relación lineal entre ellas.
+
+FUNDAMENTOS MATEMATICOS
+Hipótesis:
+  h_θ(x) = θᵀ x
+ 
+Función de costo (MSE):
+  J(θ) = (1/2m) Σᵢ₌₁ᵐ (h_θ(xᵢ) - yᵢ)²
+ 
+Regla de actualización (Gradiente Descendiente):
+  θⱼ := θⱼ - α · (∂/∂θⱼ) J(θ)
