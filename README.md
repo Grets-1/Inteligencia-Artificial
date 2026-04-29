@@ -2,11 +2,17 @@
 Algoritmo A*
 
 Pseudocódigo
+
 A*(Grafo, Inicio, Meta, Heurística)
+
   Crear ColaDePrioridad PQ (almacena [f(n), nodo])
+  
   Crear Diccionario G_COSTOS (inicializado en infinito)
+  
   Insertar [Heurística(Inicio), Inicio] en PQ
+  
   G_COSTOS[Inicio] = 0
+  
   MIENTRAS PQ no esté vacía:
     NodoActual = Extraer el de menor f(n) en PQ
     SI NodoActual es Meta: TERMINAR (Éxito)
