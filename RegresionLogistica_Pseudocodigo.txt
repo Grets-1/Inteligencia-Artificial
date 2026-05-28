@@ -1,0 +1,55 @@
+REGRESIÓN LOGÍSTICA BINARIA
+----------------------------------------------------------------
+Algoritmo: Regresión Logística Binaria
+Entrada:
+  X      → Matriz de características (m ejemplos, n rasgos)
+  y      → Vector de etiquetas reales (0 o 1)
+  alpha  → Tasa de aprendizaje
+  T      → Número de iteraciones
+Salida: Vector de parámetros theta (pesos y sesgo)
+ 
+1. Inicializar theta (ceros o valores aleatorios pequeños)
+2. Para cada iteración t = 1 hasta T:
+     a. Calcular el producto lineal:
+           z = X * theta
+     b. Aplicar la función de activación (Sigmoide):
+           h = 1 / (1 + exp(-z))
+     c. Calcular el error:
+           error = h - y
+     d. Calcular el gradiente (derivada de la Log-Loss):
+           gradiente = (1/m) * (X_transpuesta * error)
+     e. Actualizar los parámetros:
+           theta = theta - (alpha * gradiente)
+3. Retornar theta
+
+
+COMPLEJIDAD EN TIEMPO:
+  - Entrenamiento: O(k · n · d)
+      (ligeramente más costoso que la lineal por el cálculo del
+       exponente en la sigmoide, pero mantiene la misma clase de complejidad)
+  - No tiene "Ecuación Normal" (solución cerrada), siempre se
+    requieren métodos iterativos (Gradiente Descendente o Newton-Raphson)
+ 
+COMPLEJIDAD EN ESPACIO:
+  - O(d)
+
+DEFINICIÓN:
+A pesar de su nombre, es un algoritmo de CLASIFICACIÓN. Predice la
+probabilidad de que una instancia pertenezca a una categoría binaria.
+La variable dependiente es binaria (1/0, Sí/No, Spam/No Spam).
+
+
+FUNDAMENTOS MATEMATICOS
+Función Sigmoide:
+  g(z) = 1 / (1 + e⁻ᶻ)
+ 
+Hipótesis:
+  h_θ(x) = g(θᵀ x)   →  resultado en rango [0, 1]
+ 
+Función de costo (Entropía Cruzada Binaria / Log-Loss):
+  J(θ) = -(1/m) Σᵢ₌₁ᵐ [ yᵢ · log(h_θ(xᵢ)) + (1 - yᵢ) · log(1 - h_θ(xᵢ)) ]
+ 
+Regla de actualización:
+  (misma que en regresión lineal, cambia la hipótesis h_θ)
+  gradiente = (1/m) * (X_transpuesta * error)
+  theta     = theta - alpha * gradiente
